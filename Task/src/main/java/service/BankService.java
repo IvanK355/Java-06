@@ -5,16 +5,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public interface BankService {
-    void createNewTable() throws IOException, SQLException, IOException;
+    void createNewTable() throws SQLException, IOException;
 
     Account openNewAccount(Account account) throws SQLException, IOException, UnknownAccountException;
-    Account closeAccount(int id) throws SQLException, IOException, UnknownAccountException, NotEnoughMoneyException;
+    Account closeAccount(long id) throws SQLException, IOException, UnknownAccountException, NotEnoughMoneyException;
 
-    Account balance(int id) throws SQLException, IOException, UnknownAccountException;
+    Account balance(long id) throws SQLException, IOException, UnknownAccountException;
 
-    Account deposit(int id, int amount) throws SQLException, IOException, UnknownAccountException, NotEnoughMoneyException;
+    Account deposit(long id, int amount) throws SQLException, IOException, UnknownAccountException, NotEnoughMoneyException;
 
-    Account withdraw(int id, int amount) throws SQLException, IOException, NotEnoughMoneyException, UnknownAccountException;
+    Account withdraw(long id, int amount) throws SQLException, IOException, NotEnoughMoneyException, UnknownAccountException;
 
-    void transfer(int id1, int id2, int amount) throws SQLException, IOException, NotEnoughMoneyException, UnknownAccountException, SQLException;
+    void transfer(long id1, long id2, int amount) throws IOException, NotEnoughMoneyException, UnknownAccountException, SQLException;
 }

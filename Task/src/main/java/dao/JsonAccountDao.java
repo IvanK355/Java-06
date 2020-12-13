@@ -35,16 +35,16 @@ public class JsonAccountDao implements Dao<Account> {
 
     public Account create(Account account) throws IOException {
 
-        HashMap<Integer, Account> balanceHashMap = readJson();
+        HashMap<Long, Account> balanceHashMap = readJson();
         balanceHashMap.put(account.getId(), account);
         writeJson(balanceHashMap);
         return read(account.getId());
     }
 
     @Override
-    public Account read(int id) throws IOException, NullPointerException {
+    public Account read(long id) throws IOException, NullPointerException {
 
-        HashMap<Integer, Account> balanceHashMap = readJson();
+        HashMap<Long, Account> balanceHashMap = readJson();
         String holder = balanceHashMap.get(id).getName();
         int amount = balanceHashMap.get(id).getAccountAmount();
         return new Account(id, holder, amount);
@@ -53,7 +53,7 @@ public class JsonAccountDao implements Dao<Account> {
 
     @Override
     public Account update(Account account) throws IOException {
-        HashMap<Integer, Account> balanceHashMap = readJson();
+        HashMap<Long, Account> balanceHashMap = readJson();
         balanceHashMap.put(account.getId(), account);
         writeJson(balanceHashMap);
         return account;
@@ -61,13 +61,13 @@ public class JsonAccountDao implements Dao<Account> {
 
     @Override
     public Account delete(Account account) throws IOException {
-        HashMap<Integer, Account> balanceHashMap = readJson();
+        HashMap<Long, Account> balanceHashMap = readJson();
         balanceHashMap.put(account.getId(), null);
         writeJson(balanceHashMap);
         return null;
     }
 
-    private void writeJson(HashMap<Integer, Account> mapItems) throws IOException {
+    private void writeJson(HashMap<Long, Account> mapItems) throws IOException {
 
         Gson gson = new Gson();
         FileWriter fw = new FileWriter(filePath);
@@ -75,12 +75,12 @@ public class JsonAccountDao implements Dao<Account> {
         fw.close();
     }
 
-    private HashMap<Integer, Account> readJson() throws IOException {
+    private HashMap<Long, Account> readJson() throws IOException {
 
         Gson gson = new Gson();
         FileReader fr = new FileReader(filePath);
         BufferedReader bufferedReader = new BufferedReader(fr);
-        HashMap<Integer, Account> mapItemsDes = gson.fromJson(bufferedReader, itemsMapType);
+        HashMap<Long, Account> mapItemsDes = gson.fromJson(bufferedReader, itemsMapType);
         fr.close();
         return mapItemsDes;
     }

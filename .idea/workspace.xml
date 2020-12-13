@@ -5,27 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ebd7707d-74f8-4e77-bf25-ff403ecaada8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/dao/Dao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/dao/JsonAccountDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/entities/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/factory/AccountDaoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/factory/DaoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/factory/DbType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/service/BankService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/service/NotEnoughMoneyException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/service/UnknownAccountException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/java/service/impl/BankServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/resources/accounts.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/resources/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Task/src/main/resources/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/Task.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Task.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Task/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/java/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/java/HiberAccDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/dao/HibernateAccountDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/application/AccountApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/application/AccountApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/dao/HibernateAccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/dao/HibernateAccountDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/dao/JsonAccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/dao/JsonAccountDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/entities/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/entities/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/service/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/service/BankService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/java/service/impl/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/java/service/impl/BankServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/resources/accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/Task/src/main/resources/accounts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/src/main/resources/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Task/target/classes/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +62,20 @@
       <recent name="C:\Users\1\IdeaProjects\Java-06" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.AccountApplication">
+    <configuration name="AccountApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="application.AccountApplication" />
+      <module name="Task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="application.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="application.Main" />
       <module name="Task" />
@@ -81,6 +85,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AccountApplication" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -101,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607027441838</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Java-06 v1">
+      <created>1607878978384</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1607878978384</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -117,6 +129,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Java-06 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Java-06 done" />
+    <MESSAGE value="Java-06 v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Java-06 v1" />
   </component>
 </project>

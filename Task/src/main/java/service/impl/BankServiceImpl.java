@@ -5,6 +5,7 @@ import entities.Account;
 import service.BankService;
 import service.NotEnoughMoneyException;
 import service.UnknownAccountException;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -16,7 +17,7 @@ public class BankServiceImpl implements BankService {
     private Dao<Account> dao;
 
     /**
-     * В конструкторе выбранный тип DAO
+     * В конструкторе - выбранный тип DAO
      */
     public BankServiceImpl(Dao<Account> dao) {
         this.dao = dao;
@@ -35,7 +36,7 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public Account closeAccount(int id) throws SQLException, IOException, UnknownAccountException, NotEnoughMoneyException {
+    public Account closeAccount(long id) throws SQLException, IOException, UnknownAccountException, NotEnoughMoneyException {
         Account account = dao.read(id);
         dao.delete(account);
         System.out.println("Account " + id + " close: ");
@@ -43,20 +44,20 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public Account balance(int id) throws SQLException, IOException, UnknownAccountException {
+    public Account balance(long id) throws UnknownAccountException, IOException, SQLException {
         try {
             Account account = dao.read(id);
-            if (account.getName() == null) {
+            if (account == null) {
                 throw new UnknownAccountException("Неверный счет " + id);
             }
-        } catch (SQLException | UnknownAccountException | IOException e) {
+        } catch (UnknownAccountException | IOException | SQLException e) {
             e.printStackTrace();
         }
         return dao.read(id);
     }
 
     @Override
-    public Account deposit(int id, int amount) throws SQLException, IOException, UnknownAccountException, NotEnoughMoneyException {
+    public Account deposit(long id, int amount) throws SQLException, IOException, UnknownAccountException, NotEnoughMoneyException {
 
         Account account = balance(id);
         int newAmount = account.getAccountAmount() + amount;
@@ -65,7 +66,7 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public Account withdraw(int id, int amount) throws SQLException, IOException, UnknownAccountException {
+    public Account withdraw(long id, int amount) throws UnknownAccountException, IOException, SQLException {
         try {
             Account account = balance(id);
             int newAmount = account.getAccountAmount() - amount;
@@ -75,15 +76,16 @@ public class BankServiceImpl implements BankService {
             }
             account.setAccountAmount(newAmount);
             return dao.update(account);
-        } catch (NotEnoughMoneyException | IOException | UnknownAccountException e) {
+        } catch (NotEnoughMoneyException e) {
             e.printStackTrace();
-            System.out.println("Недостаточно средств");
+        } catch (UnknownAccountException e) {
+            throw new UnknownAccountException("Счет " + id + " неверный");
         }
         return dao.read(id);
     }
 
     @Override
-    public void transfer(int id1, int id2, int amount) throws SQLException, IOException, UnknownAccountException, NotEnoughMoneyException {
+    public void transfer(long id1, long id2, int amount) throws NotEnoughMoneyException {
         try {
             Account account1 = dao.read(id1);
             Account account2 = dao.read(id2);

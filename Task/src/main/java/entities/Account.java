@@ -1,5 +1,7 @@
 package entities;
 
+import service.UnknownAccountException;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,16 +9,21 @@ import javax.persistence.*;
 public class Account {
 
     @Id
-    private int id;
+    @Column(unique = true)
+    private long id;
     private String name;
     private int accountAmount;
 
-    public Account(String name, int accountAmount) {
+    public Account() {
+
+    }
+    public Account(long id, String name, int accountAmount) {
+        this.id = id;
         this.name = name;
         this.accountAmount = accountAmount;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -33,12 +40,6 @@ public class Account {
     }
 
     public void setAccountAmount(int accountAmount) {
-        this.accountAmount = accountAmount;
-    }
-
-    public Account(int id, String name, int accountAmount) {
-        this.id = id;
-        this.name = name;
         this.accountAmount = accountAmount;
     }
 

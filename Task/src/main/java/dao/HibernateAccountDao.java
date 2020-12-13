@@ -1,15 +1,14 @@
 package dao;
 
 import entities.Account;
-import service.UnknownAccountException;
-
 import javax.persistence.*;
 
 public class HibernateAccountDao implements Dao<Account> {
 
     private final String UPDATE_QUERY = "UPDATE Account e SET e.accountAmount = :increment WHERE e.id = :id";
+    private final String DELETE_QUERY = "DELETE Account e WHERE e.id = :id";
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnit");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnit");
 
     @Override
     public void createNewTable() {
@@ -17,7 +16,7 @@ public class HibernateAccountDao implements Dao<Account> {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         for (int i = 1; i < 11; i++) {
-            Account account = new Account("Holder" + i, 500);
+            Account account = new Account(i, "Holder" + i, 500);
             em.persist(account);
         }
         em.getTransaction().commit();
@@ -25,7 +24,7 @@ public class HibernateAccountDao implements Dao<Account> {
     }
 
     @Override
-    public Account create(Account account) throws UnknownAccountException {
+    public Account create(Account account) {
 
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -35,14 +34,14 @@ public class HibernateAccountDao implements Dao<Account> {
         return read(account.getId());
     }
 
-    public Account read(int id) {
+    public Account read(long id) {
 
         EntityManager em = emf.createEntityManager();
         return em.find(Account.class, id);
     }
 
     @Override
-    public Account update(Account account) throws UnknownAccountException {
+    public Account update(Account account) {
         read(account.getId());
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
@@ -59,6 +58,16 @@ public class HibernateAccountDao implements Dao<Account> {
 
     @Override
     public Account delete(Account account) {
+        read(account.getId());
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        Query query = em.createQuery(DELETE_QUERY);
+        query.setParameter("id", account.getId());
+        query.executeUpdate();
+
+        em.getTransaction().commit();
+        em.close();
         return null;
     }
 }

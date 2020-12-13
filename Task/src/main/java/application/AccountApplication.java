@@ -16,8 +16,9 @@ import java.sql.SQLException;
 public class AccountApplication {
 
     public static void main(String[] args) throws IOException, SQLException, UnknownAccountException, NotEnoughMoneyException {
+
         DaoFactory <Account> factory = new AccountDaoFactory();
-        Dao <Account> dao = factory.getDao(DbType.JSON);
+        Dao <Account> dao = factory.getDao(DbType.HIBERNATE);
         BankService bankService = new BankServiceImpl(dao);
         bankService.createNewTable();
         Account account1 = bankService.balance(1);
